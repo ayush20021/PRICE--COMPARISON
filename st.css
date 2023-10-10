@@ -1,0 +1,87 @@
+/* Set height of canvas element */
+canvas#priceChart {
+    height: 200px;
+    width: 100%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .dropdown-container {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  select#dropdownMenu {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: none;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  p#selectedItem {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #777;
+  }
+  
+  .butt {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .butt button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .butt button:hover {
+    background-color: #0056b3;
+  }
+  
+  .chart-container {
+    margin-top: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 24px;
+    }
+  
+    select#dropdownMenu {
+      max-width: 100%;
+    }
+  
+    .chart-container {
+      margin-top: 20px;
+    }
+  }
+  

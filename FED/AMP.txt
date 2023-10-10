@@ -1,0 +1,1221 @@
+PRACTICAL 1
+AIM: Introduction to Android, Introduction to Android Studio IDE, 
+Application Fundamentals: Creating a Project, Android Components, 
+Activities, Services, Content Providers, Broadcast Receivers, Interface 
+overview, Creating Android Virtual device, USB debugging mode, Android 
+Application Overview. Simple “Hello World” program. 
+
+
+MainActivity.kt
+package com.example.batch8.practical1helloworld; 
+import android.support.v7.app.AppCompatActivity; 
+import android.os.Bundle; class MainActivity : 
+AppCompatActivity { 
+ override fun onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main); 
+ }
+
+AndroidManifest.xml
+<?xml version="1.0" encoding="utf-8"?> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+package="com.example.batch8.practical1helloworld"> 
+ <application  android:allowBackup="true" 
+android:icon="@mipmap/ic_launcher" 
+android:label="@string/app_name" 
+android:roundIcon="@mipmap/ic_launcher_round" 
+android:supportsRtl="true" android:theme="@style/AppTheme"> 
+<activity android:name=".MainActivity"> 
+ <intent-filter> 
+ <action android:name="android.intent.action.MAIN" /> 
+ <category android:name="android.intent.category.LAUNCHER" /> 
+ </intent-filter> 
+ </activity> 
+ </application> 
+</manifest> 
+strings.xml
+<resources> 
+ <string name="app_name">Practical1(Helloworld)</string> 
+ <string name="hello_world">Hello World!...</string> 
+ <string name="menu_settings">Settings</string> 
+ <string name="title_activity_main"> MainActivity </string> 
+</resources> 
+
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?> 
+<android.support.constraint.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" tools:context=".MainActivity"> 
+ <TextView 
+ android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:text="@string/hello_world" 
+app:layout_constraintBottom_toBottomOf="parent" 
+app:layout_constraintLeft_toLeftOf="parent" 
+app:layout_constraintRight_toRightOf="parent" 
+app:layout_constraintTop_toTopOf="parent" /> 
+</android.support.constraint.ConstraintLayout>
+
+--------------------------------------------------------------------
+
+PR 2 -- Android Resources: (Color, Theme, String, Drawable, Dimension, 
+Image).
+
+
+colors.xml
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+ <color name="colorPrimary">#268500</color> 
+ <color name="colorPrimaryDark">#57003e</color> 
+ <color name="colorAccent">#1bd8a2</color> </resources>
+
+
+Activity resources.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".ResourcesActivity" 
+android:background="@drawable/kotlin"> Note: drawble and image 
+ <TextView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:text="@string/Resources" Note : String 
+app:layout_constraintBottom_toBottomOf="parent" 
+app:layout_constraintLeft_toLeftOf="parent" 
+app:layout_constraintRight_toRightOf="parent" 
+app:layout_constraintTop_toTopOf="parent"/> 
+</LinearLayout>
+
+
+Strings.xml 
+<resources> 
+ <string name="app_name">Practical2(Resources)</string> 
+ <string name="Resources">Android Resources Example</string> 
+ <string name="menu_settings">Settings</string> 
+ <string name="title_activity_main"> ResourcesActivity </string> 
+</resources> 
+Styles.xml 
+<resources>
+ <style name="AppTheme"parent="Theme.AppCompat.Light.DarkActionBar"> 
+ <!-- Customize your theme here. --> 
+ <item name="colorPrimary">@color/colorPrimary</item> 
+ <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
+ <item name="colorAccent">@color/colorAccent</item> 
+ <item name="android:layout_width">fill_parent</item> 
+ <item name="android:layout_height">wrap_content</item> 
+ <item name="android:capitalize">characters</item> 
+ <item name="android:typeface">monospace</item> 
+ <item name="android:textSize">12pt</item> 
+ </style> 
+</resources> 
+ResourcesActivity.kt 
+package com.example.batch8.practical2resources import 
+android.support.v7.app.AppCompatActivity import 
+android.os.Bundle 
+class ResourcesActivity : AppCompatActivity() { 
+override fun onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_resources) 
+ } 
+} 
+
+
+
+Pr  3 -----------------------------------------------------------------------
+
+Aim: Programming Activities and fragments
+
+Activitystatechange.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".StateChangeActivity" android:orientation="vertical"> 
+ <TextView 
+android:text="Android Life Cycle Activities" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:layout_alignParentRight="true" 
+android:layout_alignParentTop="true" 
+android:id="@+id/textView" 
+android:layout_marginTop="146dp" 
+android:layout_marginRight="142dp" 
+android:textSize="30sp" 
+android:textStyle="bold" 
+android:gravity="top|center_horizontal" 
+android:layout_gravity="fill"/> 
+<Button 
+android:text="Jump To Next Activity" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/btn_next_activity" 
+android:gravity="center"/> 
+</LinearLayout> 
+
+StateChangeActivity.kt 
+package com.example.batch8.practical31 
+import android.content.Context import 
+android.content.Intent 
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle import android.util.Log 
+import android.widget.Button 
+class StateChangeActivity : AppCompatActivity() { 
+ 
+internal var context: Context?= null 
+val TAG = "Activity Status" 
+override fun onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_state_change) 
+context = this@StateChangeActivity 
+ val btnNextActivity = findViewById(R.id.btn_next_activity) as Button 
+btnNextActivity.setOnClickListener { view -> 
+val intent = Intent(this, NextActivity::class.java) 
+startActivity(intent); 
+finish(); 
+ Log.i(TAG, "onCreate") 
+ } 
+ } 
+ override fun onStart() { 
+super.onStart() Log.i(TAG, 
+"onStart") 
+ } 
+ override fun onResume() { 
+super.onResume() Log.i(TAG, 
+"onResume") 
+ } 
+ override fun onPause() { 
+super.onPause() Log.i(TAG, 
+"onPause") 
+ } 
+ override fun onStop() { 
+super.onStop() Log.i(TAG, 
+"onStop") 
+ } 
+ override fun onRestart() { 
+super.onRestart() Log.i(TAG, 
+"onRestart")
+} 
+ override fun onDestroy() { 
+super.onDestroy() Log.i(TAG, 
+"onDestroy") 
+ } 
+ override fun onSaveInstanceState(outState: Bundle?) { 
+ super.onSaveInstanceState(outState) 
+ Log.i(TAG, "onSaveInstanceState") 
+ } 
+ override fun onRestoreInstanceState(savedInstanceState: Bundle?) { 
+ super.onRestoreInstanceState(savedInstanceState) 
+ Log.i(TAG, "onRestoreInstanceState") 
+ }
+} 
+
+
+Activity Next.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<android.support.constraint.ConstraintLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" tools:context=".NextActivity"> 
+ <TextView 
+ android:text="the another Activity " 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/textView2" 
+android:textSize="36sp" 
+android:textStyle="bold|italic"/>
+
+
+
+
+
+
+Activity Next.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<android.support.constraint.ConstraintLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" tools:context=".NextActivity"> 
+ <TextView 
+ android:text="the another Activity " 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:id="@+id/textView2" 
+android:textSize="36sp" 
+android:textStyle="bold|italic"/>
+</manifest>
+-------------------------------------------------------------------------
+
+PR -4
+Programs related to different Layouts
+
+
+4.1 Linear Layout 
+Activitylinear.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".LinearActivity" 
+android:orientation="vertical"> 
+<TextView 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:text="Email:" 
+android:padding="5dip" 
+android:textSize="30sp"/> <EditText 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:layout_marginBottom="10dip"/> 
+<Button 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:text="Login" 
+android:textSize="30sp" android:id="@+id/btnlogin"/> 
+ <!-- Child linear layout with horizontal orientation --> 
+<LinearLayout 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:orientation="horizontal" 
+android:background="#2a2a2a" 
+android:layout_marginTop="25dip"> 
+<TextView android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:text="Home" android:padding="15dip" 
+android:layout_weight="1" 
+android:gravity="center" 
+android:textSize="30sp" 
+android:textColor="@color/colorAccent"/> 
+<TextView 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:text="About" android:padding="15dip" 
+android:layout_weight="1" 
+ android:gravity="center" android:textSize="30sp" 
+android:textColor="@color/colorAccent"/> 
+ </LinearLayout> 
+</LinearLayout> 
+
+
+
+
+
+
+LinearActivity.kt package 
+com.batch8.linearlayout import 
+android.content.Intent 
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle import android.util.Log 
+import android.widget.Button import 
+android.support.design.widget.Snackbar class 
+LinearActivity : AppCompatActivity() { internal var 
+snackbar: Snackbar? = null override fun 
+onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_linear) 
+val btnNextActivity = findViewById(R.id.btnlogin) as Button 
+btnNextActivity.setOnClickListener { view -> 
+Snackbar.make( 
+ view, "Linear Layout Demonstration", 
+ Snackbar.LENGTH_LONG 
+ ) 
+ .setAction("Linear layout", null).show() 
+ } 
+ } 
+}
+
+
+
+
+4.2 Relative Layout 
+ActivityRelative.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".RelativeActivity"> <TextView 
+android:id="@+id/label" 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+ android:text="Email" 
+android:textSize="30dp"/> 
+ <EditText android:id="@+id/inputEmail" 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:layout_below="@id/label" /> <Button 
+android:id="@+id/btnLogin" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_below="@id/inputEmail" 
+android:layout_alignParentLeft="true" 
+android:layout_marginRight="10px" 
+android:text="Login" /> 
+ <Button android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_toRightOf="@id/btnLogin" 
+android:layout_alignTop="@id/btnLogin" android:text="Cancel" 
+/> 
+ <Button android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_alignParentBottom="true" android:text="Register 
+new Account" android:layout_centerHorizontal="true"/> 
+</RelativeLayout> 
+
+
+
+
+4.2 Relative Layout 
+ActivityRelative.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".RelativeActivity"> <TextView 
+android:id="@+id/label" 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+ android:text="Email" 
+android:textSize="30dp"/> 
+ <EditText android:id="@+id/inputEmail" 
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content" 
+android:layout_below="@id/label" /> <Button 
+android:id="@+id/btnLogin" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_below="@id/inputEmail" 
+android:layout_alignParentLeft="true" 
+android:layout_marginRight="10px" 
+android:text="Login" /> 
+ <Button android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_toRightOf="@id/btnLogin" 
+android:layout_alignTop="@id/btnLogin" android:text="Cancel" 
+/> 
+ <Button android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_alignParentBottom="true" android:text="Register 
+new Account" android:layout_centerHorizontal="true"/> 
+</RelativeLayout> 
+
+
+
+
+PR 4 ___________  chutiya haa
+
+
+
+
+Practical 5
+Programming UI elements
+
+
+
+Actvitymain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" tools:context=".MainActivity"> 
+ <LinearLayout 
+android:id="@+id/ll_main_layout" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:gravity="center" 
+android:background="#444444" 
+android:padding="25dp" 
+android:orientation="vertical"> 
+ <TextView 
+ android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:textSize="25dp" 
+android:textColor="#6dffbf" 
+android:padding="30dp" android:text="Login"/> 
+ <EditText 
+android:id="@+id/et_user_name" 
+android:hint="User Name" 
+android:textColor="#6bfff7" 
+android:textColorHint="#52afaa" 
+android:textAlignment="center" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content"/> 
+<EditText 
+android:id="@+id/et_password" 
+android:hint="Password"
+android:textColor="#6bfff7" 
+android:textColorHint="#52afaa" 
+android:textAlignment="center" 
+android:inputType="textPassword" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content"/> 
+ <LinearLayout 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:gravity="center" 
+android:padding="25dp" 
+android:orientation="horizontal"> 
+ <Button 
+android:id="@+id/btn_reset" 
+android:text="Reset" 
+android:textAllCaps="false" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" /> 
+ <Button 
+android:id="@+id/btn_submit" 
+android:text="Submit" 
+android:textAllCaps="false" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" /> 
+ </LinearLayout> 
+ </LinearLayout> 
+</LinearLayout>
+
+
+
+
+
+
+
+
+MainActivity.kt package com.batch8.userinterface
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle import 
+android.widget.Button import 
+android.widget.EditText import 
+android.widget.Toast class MainActivity : 
+AppCompatActivity() { override fun 
+onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main)
+var et_user_name = findViewById(R.id.et_user_name) as EditText 
+var et_password = findViewById(R.id.et_password) as EditText 
+var btn_reset = findViewById(R.id.btn_reset) as Button var 
+btn_submit = findViewById(R.id.btn_submit) as Button 
+btn_reset.setOnClickListener {
+ et_user_name.setText("") 
+et_password.setText("") 
+ } 
+ btn_submit.setOnClickListener { 
+val user_name = et_user_name.text; 
+val password = et_password.text; 
+ Toast.makeText(this@MainActivity, user_name, Toast.LENGTH_LONG).show() 
+ } 
+ } 
+}
+
+
+
+
+
+PR -  6
+
+6.1 - 	Dialog
+ActivityMain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".MainActivity" 
+android:gravity="center"> 
+ <Button 
+android:id="@+id/btnShowAlert" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:text="Show Alert" 
+android:gravity="center_vertical" 
+ /> 
+</LinearLayout>
+
+
+
+
+MainActivity.kt package com.batch8.alertdailog import 
+android.content.DialogInterface import 
+android.support.v7.app.AppCompatActivity import 
+android.os.Bundle import android.support.v7.app.AlertDialog 
+import kotlinx.android.synthetic.main.activity_main.* class 
+MainActivity : AppCompatActivity() { 
+override fun onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main) 
+val btnShowAlert=findViewById(R.id.btnShowAlert)as Button
+btnShowAlert.setOnClickListener { 
+val dialogBuilder = AlertDialog.Builder(this)
+ dialogBuilder.setMessage("Do you want to close this application ?")
+ .setCancelable(false)
+ .setPositiveButton("Proceed", DialogInterface.OnClickListener { 
+dialog, id -> finish() 
+ })
+ .setNegativeButton("Cancel", DialogInterface.OnClickListener { 
+dialog, id -> dialog.cancel() 
+ })
+ val alert = dialogBuilder.create() 
+alert.setTitle("AlertDialogExample")
+ alert.show() 
+ } 
+ } } 
+
+
+
+
+
+6.2 Menus
+
+ActivityMain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:id="@+id/root_layout" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:orientation="vertical" 
+android:padding="16dp" 
+android:background="#f6ffe5" 
+tools:context=".MainActivity"> 
+ <TextView 
+android:id="@+id/text_view" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:padding="25dp" 
+android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" 
+android:textColor="#168ace" 
+android:textStyle="bold" 
+android:layout_gravity="center" 
+android:text="Tap an item from action bar menu." /> 
+ </LinearLayout> 
+
+
+
+
+
+
+
+
+Toolbarmenu.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<menu 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto"> 
+ <item 
+ android:id="@+id/action_cut" 
+ android:title="Cut" 
+ app:showAsAction="ifRoom|withText" 
+android:icon="@drawable/cut1" /> 
+ <item 
+ android:id="@+id/action_copy" 
+ android:title="Copy"
+ app:showAsAction="always|withText" /> 
+<item 
+android:id="@+id/action_paste" 
+android:title="Paste" 
+app:showAsAction="ifRoom" /> 
+ <item 
+ android:id="@+id/action_new" 
+android:title="New" 
+ app:showAsAction="ifRoom" /> </menu>
+
+
+
+
+
+Mainactivity.xml package com.batch8.menus import 
+android.support.v7.app.AppCompatActivity import 
+android.os.Bundle import android.view.Menu import 
+android.view.MenuItem import 
+kotlinx.android.synthetic.main.activity_main.* class 
+MainActivity : AppCompatActivity() { override fun 
+onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main) val 
+actionBar = supportActionBar actionBar!!.title = 
+"Kotlin" 
+ actionBar.subtitle = "Menu kotlin examples." 
+actionBar.elevation = 4.0F 
+ } 
+ override fun onCreateOptionsMenu(menu: Menu): Boolean { 
+val inflater = menuInflater 
+inflater.inflate(R.menu.toolbar_menu, menu) 
+ return super.onCreateOptionsMenu(menu) 
+ } 
+ override fun onOptionsItemSelected(item: MenuItem): Boolean {
+val text_view=findViewById(R.id.text_view)as TextView 
+when (item.itemId) { R.id.action_cut -> { 
+text_view.text = "Cut" 
+ return true 
+ } 
+ R.id.action_copy -> { 
+text_view.text = "Copy" 
+ return true 
+ } 
+ R.id.action_paste -> { 
+text_view.text = "Paste" 
+return true
+} 
+ R.id.action_new -> { 
+text_view.text = "New" 
+return true 
+ } 
+ } 
+ return super.onOptionsItemSelected(item) 
+ } } 
+
+
+
+
+
+
+
+
+Practical 7
+Programs on Intents, Events Listeners and Adapters
+
+
+Activitymain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+ xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" tools:context=".MainActivity"> 
+ <GridView 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:id="@+id/gvFoods" 
+android:columnWidth="150dp" 
+android:horizontalSpacing="15dp" 
+android:numColumns="auto_fit" 
+android:verticalSpacing="15dp"/> 
+</LinearLayout> 
+
+
+Main.kt 
+package com.example.student.myapplication 
+import android.content.Context import 
+android.content.Intent 
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle import 
+android.provider.CalendarContract import 
+android.view.LayoutInflater import 
+android.view.Menu import android.view.View 
+import android.view.ViewGroup import 
+android.widget.BaseAdapter
+
+
+______________________________Not AVALABLE_______________
+
+
+
+Practical 8
+Activitymain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+ tools:context="com.example.student.internetconnection.MainActivity"> 
+ <Button android:id="@+id/checkInternet" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:layout_centerInParent="true" 
+android:background="@color/colorPrimaryDark" 
+android:text="Check Connection" 
+ android:textColor="#fff" /> </RelativeLayout>
+
+
+MainActivity.kt 
+package com.example.student.internetconnection 
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle import 
+android.view.View import android.widget.Button; 
+import android.widget.Toast; class MainActivity : 
+AppCompatActivity() { 
+ var button: Button? = null 
+ override fun onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main) 
+ button = findViewById<View>(R.id.checkInternet) as Button 
+button!!.setOnClickListener(View.OnClickListener { 
+ if (AppStatus.getInstance(applicationContext).isOnline) { 
+ Toast.makeText(applicationContext, "WiFi/Mobile Networks 
+Connected!", Toast.LENGTH_SHORT).show() 
+ } else { 
+ Toast.makeText(applicationContext, "Ooops! No WiFi/Mobile Networks 
+
+Connected!", Toast.LENGTH_SHORT).show() 
+ } 
+ }) 
+ } 
+} 
+
+
+
+
+AppStatus.kt 
+package com.example.student.internetconnection 
+import android.annotation.SuppressLint import 
+android.content.Context import 
+android.net.ConnectivityManager import 
+android.net.NetworkInfo import android.util.Log 
+class AppStatus { 
+ internal lateinit var connectivityManager: ConnectivityManager 
+internal var wifiInfo: NetworkInfo? = null internal var 
+mobileInfo: NetworkInfo? = null internal var connected = false 
+val isOnline: Boolean 
+ @SuppressLint("MissingPermission") 
+get() { 
+ try { 
+ connectivityManager = 
+context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager 
+ val networkInfo = connectivityManager.activeNetworkInfo 
+connected = networkInfo != null && networkInfo.isAvailable && 
+networkInfo.isConnected return connected 
+ } catch (e: Exception) { 
+ println("CheckConnectivity Exception: " + e.message) 
+ Log.v("connectivity", e.toString()) 
+ } 
+ return connected 
+ } 
+ companion object { 
+ internal lateinit var context: Context
+ private val instance = AppStatus() 
+fun getInstance(ctx: Context): AppStatus { 
+context = ctx.applicationContext 
+ return instance 
+ } 
+ } 
+} 
+
+
+AndroidManifest.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+package="com.example.student.internetconnection"> 
+ <uses-permission android:name="android.permission.INTERNET"/> 
+ <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+ <application 
+ android:allowBackup="true" 
+android:icon="@mipmap/ic_launcher" 
+android:label="@string/app_name" 
+ android:roundIcon="@mipmap/ic_launcher_round" 
+android:supportsRtl="true" android:theme="@style/AppTheme"> 
+ <activity android:name=".MainActivity"> 
+ <intent-filter> 
+ <action android:name="android.intent.action.MAIN" /> 
+ <category android:name="android.intent.category.LAUNCHER" /> 
+ </intent-filter> 
+ </activity> 
+ </application> 
+</manifest>
+
+----------------------------------------------------------------------------------------
+
+
+PR - 9
+
+Activitymain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:orientation="vertical" 
+android:gravity="center" 
+tools:context=".MainActivity"> 
+ <TextView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:text="SQLite Tutorial - User Management" 
+android:textSize="20dp" 
+android:padding="10dp" /> 
+ <LinearLayout 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:orientation="vertical"> 
+ <EditText 
+android:id="@+id/edittext_userid" 
+android:hint="User ID" 
+android:gravity="center" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" /> 
+ <EditText 
+android:id="@+id/edittext_name" 
+android:hint="User Name" 
+android:gravity="center" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" /> 
+ <EditText 
+ android:id="@+id/edittext_age"
+ android:hint="User Age" 
+android:gravity="center" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" /> 
+ </LinearLayout> <LinearLayout 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:orientation="horizontal"> 
+ <Button 
+android:id="@+id/button_add_user" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_weight="1" 
+android:onClick="addUser" 
+android:text="Add" /> 
+ <Button 
+android:id="@+id/button_delete_user" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_weight="1" 
+android:onClick="deleteUser" 
+android:text="Delete" /> 
+ <Button 
+android:id="@+id/button_show_all" 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content" 
+android:layout_weight="1" 
+android:onClick="showAllUsers" 
+android:text="Show All" /> 
+ </LinearLayout> <TextView 
+android:id="@+id/textview_result" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" /> 
+ <LinearLayout 
+android:id="@+id/ll_entries" 
+android:padding="15dp" 
+android:orientation="vertical" 
+android:layout_width="match_parent" 
+android:layout_height="wrap_content"> 
+ </LinearLayout> 
+</LinearLayout> 
+
+
+
+
+UserModule.kt 
+package com.batch8.sqllitedemo class UserModel(val userid: String, 
+val name: String, val age: String) 
+DBContract.kt 
+package com.batch8.sqllitedemo import 
+android.provider.BaseColumns object 
+DBContract {
+ class UserEntry : BaseColumns { 
+companion object { val 
+TABLE_NAME = "users" val 
+COLUMN_USER_ID = "userid" val 
+COLUMN_NAME = "name" val 
+COLUMN_AGE = "age" 
+ } } } 
+UserDBHelper.kt 
+package com.batch8.sqllitedemo 
+import android.content.ContentValues 
+import android.content.Context import 
+android.database.Cursor 
+import android.database.sqlite.SQLiteConstraintException 
+import android.database.sqlite.SQLiteDatabase import 
+android.database.sqlite.SQLiteException import 
+android.database.sqlite.SQLiteOpenHelper 
+import java.util.ArrayList 
+class UsersDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
+null, DATABASE_VERSION) { 
+ override fun onCreate(db: SQLiteDatabase) { 
+ db.execSQL(SQL_CREATE_ENTRIES) 
+ } 
+ override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) { 
+db.execSQL(SQL_DELETE_ENTRIES) onCreate(db) 
+ } 
+ override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) { 
+onUpgrade(db, oldVersion, newVersion) 
+ }
+ @Throws(SQLiteConstraintException::class) 
+fun insertUser(user: UserModel): Boolean { 
+val db = writableDatabase 
+val values = ContentValues() 
+ values.put(DBContract.UserEntry.COLUMN_USER_ID, user.userid) 
+values.put(DBContract.UserEntry.COLUMN_NAME, user.name) 
+values.put(DBContract.UserEntry.COLUMN_AGE, user.age)
+ val newRowId = db.insert(DBContract.UserEntry.TABLE_NAME, null, values) 
+return true 
+ } 
+ @Throws(SQLiteConstraintException::class) 
+fun deleteUser(userid: String): Boolean { 
+val db = writableDatabase 
+val selection = DBContract.UserEntry.COLUMN_USER_ID + " LIKE ?" 
+val selectionArgs = arrayOf(userid)
+db.delete(DBContract.UserEntry.TABLE_NAME, selection, selectionArgs) 
+return true 
+ } 
+ fun readUser(userid: String): ArrayList<UserModel> { 
+val users = ArrayList<UserModel>() 
+val db = writableDatabase 
+ var cursor: Cursor? = null 
+try { 
+cursor = db.rawQuery("select * from " + DBContract.UserEntry.TABLE_NAME + " 
+WHERE " + DBContract.UserEntry.COLUMN_USER_ID + "='" + userid + "'", null) 
+ } 
+catch (e: SQLiteException) { 
+db.execSQL(SQL_CREATE_ENTRIES) 
+ return ArrayList() 
+ } 
+ var name: String 
+var age: String 
+ if (cursor!!.moveToFirst()) { 
+while (cursor.isAfterLast == false) { 
+name = 
+cursor.getString(cursor.getColumnIndex(DBContract.UserEntry.COLUMN_NAME)) 
+age = 
+cursor.getString(cursor.getColumnIndex(DBContract.UserEntry.COLUMN_AGE)) 
+users.add(UserModel(userid, name, age)) cursor.moveToNext() 
+ } 
+} 
+ return users 
+ } 
+
+fun readAllUsers(): ArrayList<UserModel> { 
+val users = ArrayList<UserModel>() 
+ val db = writableDatabase 
+ var cursor: Cursor? = null 
+try { 
+ cursor = db.rawQuery("select * from " + DBContract.UserEntry.TABLE_NAME, 
+null) 
+ } catch (e: SQLiteException) { 
+db.execSQL(SQL_CREATE_ENTRIES) 
+ return ArrayList() 
+ } 
+var userid: String 
+var name: String 
+var age: String 
+ if (cursor!!.moveToFirst()) { 
+while (cursor.isAfterLast == false) { 
+userid = 
+cursor.getString(cursor.getColumnIndex(DBContract.UserEntry.COLUMN_USER_ID)) 
+name = 
+cursor.getString(cursor.getColumnIndex(DBContract.UserEntry.COLUMN_NAME)) 
+age = 
+cursor.getString(cursor.getColumnIndex(DBContract.UserEntry.COLUMN_AGE)) 
+users.add(UserModel(userid, name, age)) 
+cursor.moveToNext() 
+ } 
+} 
+ return users 
+ } 
+ companion object { val 
+DATABASE_VERSION = 1 val 
+DATABASE_NAME = "FeedReader.db" 
+private val SQL_CREATE_ENTRIES = 
+ "CREATE TABLE " + DBContract.UserEntry.TABLE_NAME + " (" + 
+ DBContract.UserEntry.COLUMN_USER_ID + " TEXT PRIMARY KEY," + 
+ DBContract.UserEntry.COLUMN_NAME + " TEXT," + 
+DBContract.UserEntry.COLUMN_AGE + " TEXT)" private val 
+SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + 
+DBContract.UserEntry.TABLE_NAME 
+} } 
+
+
+Mai
+nAci
+vity.
+kt
+package com.batch8.sqllitedemo import 
+android.support.v7.app.AppCompatActivity import 
+android.os.Bundle import android.view.View 
+import android.widget.TextView 
+import kotlinx.android.synthetic.main.activity_main.* 
+class MainActivity : AppCompatActivity() { lateinit 
+var usersDBHelper : UsersDBHelper override fun 
+onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main) 
+ usersDBHelper = UsersDBHelper(context = this) 
+ } 
+ fun addUser(v:View){ 
+ var userid = this.edittext_userid.text.toString() 
+var name = this.edittext_name.text.toString() var 
+age = this.edittext_age.text.toString() 
+ var result = usersDBHelper.insertUser(UserModel(userid = userid,name = name,age = 
+age)) this.edittext_age.setText("") this.edittext_name.setText("") 
+this.edittext_userid.setText("") 
+ this.textview_result.text = "Added user : "+result 
+this.ll_entries.removeAllViews() 
+ } 
+ fun deleteUser(v:View){ var userid = 
+this.edittext_userid.text.toString() val result = 
+usersDBHelper.deleteUser(userid) 
+this.textview_result.text = "Deleted user : "+result 
+this.ll_entries.removeAllViews() 
+ } 
+ fun showAllUsers(v:View){ 
+ var users = usersDBHelper.readAllUsers() 
+this.ll_entries.removeAllViews() 
+users.forEach { var tv_user = 
+TextView(this) tv_user.textSize = 30F 
+ tv_user.text = it.name.toString() + " - " + it.age.toString() 
+this.ll_entries.addView(tv_user) 
+ } 
+ this.textview_result.text = "Fetched " + users.size + " users" 
+}}
+
+-----------------------------------------------------------------------------------------------------------------
+
+Pr - 10
+
+MainActivity.kt 
+package com.batch8.permisiondemo 
+import android.content.Context import 
+android.os.Build 
+import android.support.v7.app.AppCompatActivity 
+import android.os.Bundle import 
+android.widget.Toast 
+import kotlinx.android.synthetic.main.activity_main.* class 
+MainActivity : AppCompatActivity() { private val 
+PermissionsRequestCode = 123 private lateinit var 
+managePermissions:ManagePermissions override fun 
+onCreate(savedInstanceState: Bundle?) { 
+super.onCreate(savedInstanceState) 
+setContentView(R.layout.activity_main) 
+val list = listOf<String>( 
+android.Manifest.permission.CAMERA, 
+android.Manifest.permission.READ_CALENDAR, 
+android.Manifest.permission.READ_CONTACTS, 
+android.Manifest.permission.READ_EXTERNAL_STORAGE, 
+android.Manifest.permission.SEND_SMS )
+managePermissions = ManagePermissions(this,list,PermissionsRequestCode) 
+button.setOnClickListener{ 
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) 
+managePermissions.checkPermissions() 
+ } 
+ }
+override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, 
+grantResults: IntArray) { 
+ when (requestCode) { 
+ PermissionsRequestCode ->{ 
+ val isPermissionsGranted = managePermissions 
+ .processPermissionsResult(requestCode,permissions,grantResults) 
+if(isPermissionsGranted){ toast("Permissions granted.") 
+ }else{ 
+ toast("Permissions denied.")
+ } 
+return 
+ } 
+ } 
+ } 
+}
+fun Context.toast(message: String) { 
+ Toast.makeText(this, message, Toast.LENGTH_SHORT).show() 
+}
+
+
+
+
+ActivityMain.kt 
+package com.batch8.permisiondemo import 
+android.app.Activity import 
+android.content.pm.PackageManager import 
+android.support.v4.app.ActivityCompat import 
+android.support.v4.content.ContextCompat import 
+android.support.v7.app.AlertDialog import 
+android.widget.Toast 
+class ManagePermissions(val activity: Activity,val list: List<String>,val code:Int) { 
+fun checkPermissions() { 
+ if (isPermissionsGranted() != PackageManager.PERMISSION_GRANTED) { 
+showAlert() 
+ } else { 
+ Toast.makeText(activity, "Permissions already granted", 
+ Toast.LENGTH_LONG).show() 
+ } 
+ }
+ private fun isPermissionsGranted(): Int {
+ var counter = 0; 
+for (permission in list) { 
+ counter += ContextCompat.checkSelfPermission(activity, permission) 
+ } 
+ return counter 
+ }
+ private fun deniedPermission(): String { 
+ for (permission in list) { 
+ if (ContextCompat.checkSelfPermission(activity, permission) 
+== PackageManager.PERMISSION_DENIED) return permission 
+ } 
+return "" }
+ private fun showAlert() { 
+val builder = AlertDialog.Builder(activity) 
+builder.setTitle("Need permission(s)") 
+builder.setMessage("Some permissions are required to do the task.") 
+builder.setPositiveButton("OK", { dialog, which -> requestPermissions() }) 
+builder.setNeutralButton("Cancel", null) 
+ val dialog = builder.create() 
+dialog.show() 
+ }
+ private fun requestPermissions() { 
+val permission = deniedPermission() 
+ if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+ Toast.makeText(activity, "Should show an explanation.", 
+ Toast.LENGTH_LONG).show() 
+ } else { 
+ ActivityCompat.requestPermissions(activity, list.toTypedArray(), code) 
+ } 
+ }
+ fun processPermissionsResult(requestCode: Int, permissions: Array<String>, 
+grantResults: IntArray): Boolean { var result = 0 
+if (grantResults.isNotEmpty()) { 
+for (item in grantResults) { 
+result += item 
+ } 
+ } 
+ if (result == PackageManager.PERMISSION_GRANTED) return true 
+return false 
+ } } 
+
+
+
+ActivityMain.xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<android.support.constraint.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:tools="http://schemas.android.com/tools" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".MainActivity"> 
+ <TextView 
+android:layout_width="wrap_content" 
+android:layout_height="wrap_content"
+android:text="Permission Example Demo" 
+app:layout_constraintBottom_toBottomOf="parent" 
+app:layout_constraintLeft_toLeftOf="parent" 
+app:layout_constraintRight_toRightOf="parent" 
+app:layout_constraintTop_toTopOf="parent"/> 
+ <Button android:text="Request for 
+Permission" 
+android:layout_width="wrap_content" 
+ android:layout_height="wrap_content" android:id="@+id/button"/> 
+</android.support.constraint.ConstraintLayout> 

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Your Track List</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: #e3f2e4;
+    }
+    a{
+    text-decoration:none;
+    color: black;
+    font-family: 'Montserrat', sans-serif;}
+
+    #button {
+      appearance: none;
+      background-color: #2ea44f;
+      border: 1px solid rgba(27, 31, 35, .15);
+      border-radius: 6px;
+      box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 6px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    #button:focus:not(:focus-visible):not(.focus-visible) {
+      box-shadow: none;
+      outline: none;
+    }
+
+    #button:hover {
+      background-color: #2c974b;
+    }
+
+    #button:focus {
+      box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+      outline: none;
+    }
+
+    #button:disabled {
+      background-color: #94d3a2;
+      border-color: rgba(27, 31, 35, .1);
+      color: rgba(255, 255, 255, .8);
+      cursor: default;
+    }
+
+    #button:active {
+      background-color: #298e46;
+      box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .product {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .product h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+      flex: 1;
+      color: #333;
+    }
+
+    .product .price {
+      font-weight: bold;
+      font-size: 20px;
+      margin-right: 20px;
+      text-align: right;
+      flex: 1;
+      color: #388e3c;
+    }
+
+    .product a {
+      background-color: #388e3c;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .product a:hover {
+      background-color: #2e7d32;
+    }
+
+    .product .title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body onload="loadData()">
+  <div class="container">
+    <h1>Your Track List</h1>
+    <div id="product-list"></div>
+   
+    
+    <button class="butt" role="button" id="button">Edit Data</button>
+    <button class="butt2" role="button" id="button">Delete  Data</button><br>
+
+    <a href="alpha.html">Get Detailed price</a>
+
+  </div>
+
+  <script>
+    const username = getCookie("username");
+    function loadData() {
+      fetch("https://api.ayushcenter.xyz/get/" + username)
+        .then((response) => response.json())
+        .then((data) => {
+          const productList = document.getElementById("product-list");
+          data.forEach((product) => {
+            const productElem = document.createElement("div");
+            productElem.classList.add("product");
+            productElem.innerHTML = `
+              <h2>${product.name}</h2>
+              <div class="price">
+                <div class="title">Price:</div>
+                ${product.price}
+              </div>
+              <div class="price">
+                <div class="title">Current Price:</div>
+                ${product.currentprice}
+                </div>
+            
+                <div class="link">
+                <a href="${product.link}" target="_blank">Buy Now</a>
+              </div>
+
+            `;
+            productList.appendChild(productElem);
+          });
+        });
+    }
+
+    function checkCookie() {
+      var username = getCookie("username");
+      if (username != "") {
+        console.log("Welcome again ");
+        // The cookie is present, render the HTML page
+        // document.getElementById("welcome").innerHTML = "Welcome " + username;
+        console.log("Welcome " + username);
+      } else {
+        // The cookie is not present, redirect to the login page
+        // alert("You are not logged in. You will be redirected to the login page.");
+        window.location.href = "login.html";
+        // window.location.href = "https://ayushcenter.xyz/login";
+      }
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    const button = document.querySelector(".butt");
+    button.addEventListener("click", () => {
+      // Prompt for name
+      var name = prompt("Enter product name:");
+
+      // Prompt for price
+      var price = prompt("Enter the price:");
+
+      // Display name and price in an alert
+
+      if(name == null || price == null){
+        alert("Please enter the name and price");
+      }
+      else{
+        console.log(name);
+        console.log(price);
+        fetch("http://localhost:8080/edit/" + price + "/" + name)
+        .then((response) => response.json())
+        .then((data) => {
+          const integerData = data;
+          console.log(integerData);
+          if (integerData == 1) {
+            alert("Plese check the name amd price")
+          }
+
+          if (integerData == 0) {
+            alert("successfully updated the price")
+          }
+
+          if (integerData == 2) {
+            alert("SQL error");
+          }
+        })
+
+        .catch((error) => console.error(error));
+      }
+
+
+      
+    });
+
+    const button2 = document.querySelector(".butt2");
+    button2.addEventListener("click", () => {
+
+      console.log("delete");
+      // Prompt for name
+      var name = prompt("Enter product name:");
+
+      console.log(name);
+
+      fetch("http://localhost:8080/delete/" + name)
+        .then((response) => response.json())
+        .then((data) => {
+          const integerData = data;
+          console.log(integerData);
+          if (integerData == 1) {
+            alert("Plese check the name")
+          }
+
+          if (integerData == 0) {
+            alert("successfully deleted the product")
+          }
+
+          if (integerData == 2) {
+            alert("SQL error");
+          }
+        })
+
+        .catch((error) => console.error(error));
+
+    });
+
+
+   
+      // window.onload = checkCookie;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<DATA>
+
+	<ROW>
+		<ID>12</ID>
+		<Name>Redmi Note 11</Name>
+		<Price>20000</Price>
+		<Cprice>12999</Cprice>
+		<Link>https://amzn.eu/d/4kRIRCq</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>13</ID>
+		<Name>Denim Shoe</Name>
+		<Price>500</Price>
+		<Cprice>1093</Cprice>
+		<Link>https://amzn.eu/d/ey2sU9h</Link>
+		<Uname>abc</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>14</ID>
+		<Name>Nord CE 2</Name>
+		<Price>15000</Price>
+		<Cprice>18999</Cprice>
+		<Link>https://amzn.eu/d/8EngpOv</Link>
+		<Uname>abc</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>15</ID>
+		<Name>Pendrive </Name>
+		<Price>400</Price>
+		<Cprice>367</Cprice>
+		<Link>https://amzn.eu/d/0cw7UYs</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>26</ID>
+		<Name>ROG Phone 5</Name>
+		<Price>30000</Price>
+		<Cprice>41800</Cprice>
+		<Link>https://amzn.eu/d/8eRDFfu</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>28</ID>
+		<Name>Sony Camera </Name>
+		<Price>75000</Price>
+		<Cprice>79990</Cprice>
+		<Link>https://www.flipkart.com/sony-alpha-ilce-6400l-aps-c-mirrorless-camera-16-50-mm-power-zoom-lens-featuring-eye-af-4k-movie-recording/p/itm960219ec4660b?pid=DLLFDJ9DFXVAZDTS&lid=LSTDLLFDJ9DFXVAZDTSQXJEDS&marketplace=FLIPKART&store=jek%2Fp31%2Ftrv&srno=b_1_3&otracker=hp_omu_Best%2Bof%2BElectronics_1_3.dealCard.OMU_Q5LU1U8PHMK6_3&otracker1=hp_omu_PINNED_neo%2Fmerchandising_Best%2Bof%2BElectronics_NA_dealCard_cc_1_NA_view-all_3&iid=1d0218d2-8605-4cd8-86a9-ba5291944a15.DLLFDJ9DFXVAZDTS.SEARCH&ssid=v0rgrz7qww0000001677174110433</Link>
+		<Uname>Ayush11</Uname>
+		<Vendor>Flipkart</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>29</ID>
+		<Name>One Plus Tv</Name>
+		<Price>10000</Price>
+		<Cprice>14999</Cprice>
+		<Link>https://amzn.eu/d/gbl64X4</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>30</ID>
+		<Name>Real Me Narzo</Name>
+		<Price>5000</Price>
+		<Cprice>6999</Cprice>
+		<Link>https://amzn.eu/d/6e8blBR</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>31</ID>
+		<Name>RTX 3060 TI</Name>
+		<Price>60000</Price>
+		<Cprice>48299</Cprice>
+		<Link> https://amzn.eu/d/3Dxw735</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>NULL</ID>
+		<Name>CHARGER BATT</Name>
+		<Price>500</Price>
+		<Cprice>2804</Cprice>
+		<Link>https://amzn.eu/d/gW2W8QJ</Link>
+		<Uname>Ayush</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+
+	<ROW>
+		<ID>NULL</ID>
+		<Name>Samsung S23 ULTRA</Name>
+		<Price>100000</Price>
+		<Cprice>124999</Cprice>
+		<Link>https://amzn.eu/d/h5Vq6tx</Link>
+		<Uname>AyushKumar</Uname>
+		<Vendor>Amazon</Vendor>
+	</ROW>
+</DATA>

@@ -1,0 +1,129 @@
+body {
+  background-color: #ffffff; /* add a background color */
+}
+
+#container {
+  width: 80%; /* set the width of the container to 80% of the viewport */
+  margin: 0 auto; /* center the container horizontally */
+  text-align: center; /* center the text within the container */
+}
+
+#a1, #a2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: 'Poppins', sans-serif; /* use the Poppins font */
+  color: #4CAF50; /* set the text color to green */
+  font-size: 36px; /* set the font size to 36px */
+  font-weight: bold; /* set the font weight to bold */
+  text-transform: uppercase; /* convert the text to uppercase */
+  letter-spacing: 2px;  /* add 2px of letter spacing */
+  margin: 50px 0; /* add a margin between the heading and the products */
+  }
+  
+ 
+
+h1 , h2 {
+  font-family:   'Poppins', sans-serif;; /* use the Poppins font for the heading */
+  color: #333; /* set the text color to dark gray */
+  margin-bottom: 30px; /* add a margin between the heading and the input */
+}
+
+label {
+  font-family: 'Sofia Sans', sans-serif; /* use the Sofia Sans font for the label */
+  color: #555; /* set the text color to gray */
+  margin-right: 10px; /* add a margin between the label and the input */
+}
+
+input[type="text"] {
+  padding: 12px 20px; /* add padding to the input */
+  border: 1px solid #ddd; /* add a border to the input */
+  border-radius: 4px; /* round the corners of the input */
+  font-size: 16px; /* set the font size of the input */
+}
+
+button {
+  background-color: #4CAF50; /* set the background color of the button to green */
+  color: white; /* set the text color of the button to white */
+  padding: 12px 20px; /* add padding to the button */
+  border: none; /* remove the border of the button */
+  border-radius: 4px; /* round the corners of the button */
+  font-size: 16px; /* set the font size of the button */
+  cursor: pointer; /* change the cursor to a pointer when hovering over the button */
+}
+
+.product {
+  width: 80%; /* set the width of each product to 80% of the viewport */
+  margin: 0 auto; /* center each product horizontally */
+  display: flex; /* use flexbox to layout the product */
+  justify-content: space-between; /* distribute the elements within the product evenly */
+  align-items: center; /* align the elements within the product vertically */
+  margin-bottom: 30px; /* add a margin between each product */
+}
+
+.left {
+  width: 70%; /* set the width of the left section to 70% */
+  text-align: left; /* align the text within the left section to the left */
+}
+
+.right {
+  width: 30%; /* set the width of the right section to 30% */
+}
+
+img {
+  width: auto; /* set the width of the image to auto */
+  height: 300px; /* set the height of the image to 300px */
+  object-fit: contain; /* scale the image to fit within the container */
+  border-radius: 4px; /* round the corners of the image */
+  background-color: transparent; /* remove the white background */
+  mix-blend-mode:normal; /* apply the multiply blend mode to the image */
+  
+}
+
+.product h3 {
+  font-family: 'Poppins', sans-serif; /* use the Poppins font for the product name */
+  color: #333; /* set the text color to dark gray */
+  font-size: 24px; /* set the font size to 24px */
+  text-transform: uppercase; /* convert the text to uppercase */
+  letter-spacing: 2px; /* add 2px of letter spacing */
+  text-align: center; /* center the text within the product */
+  overflow: hidden; /* truncate the text if it exceeds the width of the container */
+  white-space: nowrap; /* prevent the text from wrapping to the next line */
+  text-overflow: ellipsis; /* add ellipsis if the text is truncated */
+  max-width: 50ch; /* set the maximum width of the text to 50 characters */
+}
+
+.product a {
+  font-family: 'Sofia Sans', sans-serif; /* use the Sofia Sans font for the "Know More" text */
+  color: #4CAF50; /* set the text color to green */
+  font-size: 18px; /* set the font size to 18px */
+  font-weight: bold;
+  text-transform: uppercase; /* convert the text to uppercase */
+  letter-spacing: 1px; /* add 1px of letter spacing */
+  text-align: center; /* center the text within the product */
+  text-decoration: none; /* remove the underline from the link */
+  padding: 10px 15px; /* add padding to the link */
+  border: 1px solid #4CAF50; /* add a border to the link */
+  border-radius: 4px; /* round the corners of the link */
+  transition: all 0.2s ease-in-out; 
+}
+
+.product a:hover {
+  background-color: #4CAF50; 
+  color: white;
+  cursor: pointer;
+}
+
+.product p {
+  font-family: 'Sofia Sans', sans-serif; 
+  color: #555; 
+  font-size: 18px; 
+  text-align: center; 
+  margin-top: 10px; 
+  font-weight: bold;
+}
+
+
+ 
+
