@@ -82,32 +82,15 @@ public class Scraper {
 
 
             try {
-                String insertSQL = "INSERT INTO USERS (Name, Pass, Mail) VALUES (?, ?, ?)";
-                PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-                preparedStatement.setString(1, key1);
-                preparedStatement.setString(2, key2);
-                preparedStatement.setString(3, key3);
+              
                 String body="Hii Thanks For Registration on Price Compare for you reference  your User Name is : "+key1+" Pass_Key : "+key2;
                 String sub="Thanks For Joining Us ";
                 sendEmail1(key3,body,sub);
                 int rowsAffected = preparedStatement.executeUpdate();
-            } catch (SQLException err) {
-                System.out.println(err);
-                status = 2;  // SQL ERR OCCURRED
-            } catch (MessagingException | UnsupportedEncodingException e) {
+            }  catch (MessagingException | UnsupportedEncodingException e) {
                 throw new RuntimeException(e);
             } finally {
-                try {
-                    if (connection != null) {
-
-                        connection.close();
-                    }
-                } catch (SQLException e) {
-                    System.out.println(e);
-                }
-
-            }
-        }
+             
 
         return status;
 
