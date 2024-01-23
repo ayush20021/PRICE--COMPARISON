@@ -432,56 +432,6 @@ public class Scraper {
         }
         return data1;
 
-//        List<HtmlDivision> productNames1 = page.getByXPath("//div[@class='_4rR01T']");  // keyword used to identify the name of the product
-//
-//
-//        List<HtmlDivision> productPrice = page.getByXPath("//div[@class='_30jeq3 _1_WHN1']"); // keyword used to identify the price  of the product
-//
-//
-//        ArrayList<String> a = new ArrayList<>();
-//        ArrayList<String> b = new ArrayList<>();
-//        ArrayList<String> c= new ArrayList<>();
-//        List<data> data1 = new ArrayList<>();
-//        for(HtmlDivision div: productNames1) {
-//            String productName1 = div.getTextContent();
-//
-//            a.add(productName1+" ");
-//            // System.out.println("Product name : " + productName1);
-//        }
-//
-//        for (HtmlDivision div:productPrice){
-//            String price = div.getTextContent();
-//            b.add(price);
-//        }
-//
-//        for (int i =0;i<5;i++){
-//            c.add("Name :"+a.get(i)+" "+"Price "+b.get(i));
-//        }
-//
-//        for (int j = 0;j<5;j++){
-//            String a1 = a.get(j);
-//            String prefix1 = a.get(j);
-//            String c1 = prefix1.replaceAll(" ","");
-//            String a3 = "https://www.flipkart.com/search?q="+c1;
-//
-//            String b1 = b.get(j);
-//
-//            data1.add(new data(a1,b1,a3));
-//
-//        }
-//
-//        System.out.println();
-//
-//
-//        System.out.println("Found !!!!   ");
-//        System.out.println(" Filtering the details ");
-//        System.out.println(" Suspicious sound ");
-//        System.out.println("Got It");
-//        return data1;
-
-
-
-
 
 
 
@@ -489,10 +439,10 @@ public class Scraper {
 
 
     public static int history(int min, int max) {
-        // Create a Random object
+       
         Random random = new Random();
 
-        // Generate a random integer within the given range
+        
         int randomNumber = random.nextInt(max - min + 1) + min;
 
         return randomNumber;
@@ -586,15 +536,7 @@ public class Scraper {
 
 
 
-//            HtmlPage page = client.getPage(Link);
-//            List<HtmlDivision> price1 = page.getByXPath("//div[@class='_30jeq3 _16Jk6d']");
-//
-//            for (HtmlDivision f:price1){
-//                String p1 = f.getTextContent();
-//                String p2 = p1.replace("₹","");
-//                pointer= Integer.parseInt(p2.replace(",",""));
-//                System.out.println(pointer);
-//            }
+
 
 
         }
