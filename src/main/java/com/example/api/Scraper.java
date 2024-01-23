@@ -118,9 +118,6 @@ public class Scraper {
             System.out.println(resultSet.getFetchSize());
             if(resultSet.next()){
                 ststus=0;
-//                Cookie cookie = new Cookie("username", "admin");
-//                cookie.setMaxAge(3600); // 1 hour
-//                response.addCookie(cookie);
 
 
 
@@ -271,24 +268,16 @@ public class Scraper {
         HtmlPage page = client.getPage(url2);
         List<HtmlSpan> productNames1 = page.getByXPath("//span[@class='a-size-medium a-color-base a-text-normal']");
         List<HtmlSpan> productPrice = page.getByXPath("//span[@class='a-price']");
-        // List<HtmlAnchor> productLinks = page.getByXPath("//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']")  ;
+       
         List<HtmlAnchor> productLinks = page.getByXPath("//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal' or @class='a-link-normal a-text-normal' ]");
-        // List<HtmlImage> product_Image = page.getByXPath("//span[@class='s-image']");
+      
         List<HtmlImage> productImage = page.getByXPath("//img[@data-image-source-density='1']");
 
         System.out.println(productLinks.size());
         System.out.println(productNames1.size());
         ArrayList<String> a = new ArrayList<>();
-        ArrayList<String> b = new ArrayList<>();
-        ArrayList<String> c = new ArrayList<>();
-        ArrayList<String> d = new ArrayList<>();
-        List<data> data1 = new ArrayList<>();
-        // System.out.println(productNames1.size());
-
-//        for(HtmlDivision span: productNames1) {
-//            String productName = span.getTextContent();
-//            System.out.println("Product name : " + productName);
-//        }
+         List<data> data1 = new ArrayList<>();
+     
 
         for (HtmlImage image : productImage) {
             String image1 = image.getSrcAttribute();
@@ -327,24 +316,10 @@ public class Scraper {
             b.add(b1);
         }
 
-//        for (HtmlAnchor anchor : productLinks) {
-//            // Extract the text content
-//            String textContent = anchor.getTextContent();
-//            System.out.println("textContent : " + textContent);
-//
-//            // Extract the href link
-//            String href = anchor.getHrefAttribute();
-//
-//            // Extract the actual link from the href
-//            String[] parts = href.split("%3D1");
-//            String actualLink = parts[0];
-//            c.add(actualLink);
-//            System.out.println("actualLink : " + actualLink);
-//        }
+
 
         for (int i =0;i<10;i++){
-//            System.out.print("Name :"+a.get(i)+" "+"Price "+b.get(i)+" Link To buy "+"https://www.amazon.in"+c.get(i));
-//            System.out.println();
+
             String name = c.get(i);
             String a12 = "";
             //System.out.println(name);
@@ -356,10 +331,10 @@ public class Scraper {
             }
             if(a12.equals("https")){
                 data1.add(new data(a.get(i),b.get(i),c.get(i), d.get(i)));
-                // System.out.println();
+
 
             }else {
-                String c1 ="https://www.amazon.in"+c.get(i);
+                String c1 ="https://www.amazon.in"+c.get(i+);
                 System.out.print("Name :"+a.get(i)+" "+"Price "+b.get(i)+" Link To buy "+c1);
                 data1.add(new data(a.get(i),b.get(i),c1,d.get(i)));
                 System.out.println();
@@ -402,22 +377,19 @@ public class Scraper {
         HtmlPage page = client.getPage(url2);
 
 
-        List<HtmlDivision> productNames1 = page.getByXPath("//div[@class='_4rR01T']");
-        List<HtmlAnchor> productNames2 = page.getByXPath("//a[@class='s1Q9rs']");
+        List<HtmlDivision> productNames1 = page.getByXPath("//div[@class='_4rR01T'//]");
+        List<HtmlAnchor> productNames2 = page.getByXPath("//as//[@class='s1Q9rsgaha']"//);
 
 
-        List<HtmlDivision> productPrice = page.getByXPath("//div[@class='_30jeq3 _1_WHN1' or @class='_30jeq3']");
+        List<HtmlDivision> productPrice = page.getByXPath("//div[@class='_30jeq3 _1_WHN1' or @class='_30jeq3'//]");
         // List<HtmlAnchor> productLinks = page.getByXPath("//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']")  ;
-        List<HtmlAnchor> productLinks = page.getByXPath("//a[@class='_1fQZEK' or @class='s1Q9rs']");
+        List<HtmlAnchor> productLinks = page.getByXPath("//a[@class='_1fQZEK' or @class='s1Q9rs'//]");
         List<HtmlImage> p = page.getByXPath("//img[@class='_396cs4']");
         //System.out.println(productLinks.size());
         //System.out.println(productNames1.size());
 
         ArrayList<String> a = new ArrayList<>();
-        ArrayList<String> b = new ArrayList<>();
-        ArrayList<String> c = new ArrayList<>();
-        ArrayList<String> d= new ArrayList<>();
-        List<data> data1 = new ArrayList<>();
+        
 
         for (HtmlImage img:p){
             String image = img.getSrcAttribute();
