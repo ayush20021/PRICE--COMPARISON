@@ -158,44 +158,7 @@ public class Scraper {
 
 
 
-    @Scheduled(cron = "0 0 3 * * *")
-    // @Scheduled(fixedRate = 10)
-    public void runTask() throws SQLException, IOException, MessagingException, jakarta.mail.MessagingException {
-        String url = "jdbc:mysql://ayushcenter.xyz:402/Ayush";
-        String username = "Ayush";
-        String password = "Ayuh1315!!";
-        Connection connection = DriverManager.getConnection(url, username, password);
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM check_data ");
-        ArrayList<String> Links = new ArrayList<>();
-        ArrayList<Integer> Prices = new ArrayList<>();
-        ArrayList<String> mail = new ArrayList<>();
-        ArrayList<Integer> p= new ArrayList<>();
-        ArrayList<String> F = new ArrayList<>();
-        int abc=0;
-        String ActualPrice = "";
 
-        try {
-            while(resultSet.next()){
-                //Retrieve by column name
-                String Link  = resultSet.getString("Link");
-                int Price = resultSet.getInt("Price");
-                String Email = resultSet.getString("Email");
-                Links.add(Link);
-                Prices.add(Price);
-                mail.add(Email);}
-        }catch (SQLException s){
-            System.out.println(s);
-        }finally {
-            if(connection != null){
-                try {
-                    connection.close();
-                }catch (Exception ex){
-                    System.out.println(ex);
-                }
-
-            }
-        }
 
         WebClient client = new WebClient();
         client.getOptions().setJavaScriptEnabled(false);
